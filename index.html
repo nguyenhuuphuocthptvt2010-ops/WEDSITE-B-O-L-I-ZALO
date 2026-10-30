@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>CTY CP TM TT NP - HT TEAM SUPPORT</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-2: #18263b;
+      --text: #eef4ff;
+      --muted: #a8b6ca;
+      --blue: #3984ff;
+      --blue-hover: #236fe8;
+      --line: rgba(255,255,255,.1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 28px 16px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(57,132,255,.18), transparent 32%),
+        radial-gradient(circle at 90% 90%, rgba(18,190,166,.12), transparent 28%),
+        var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .wrap { width: 100%; max-width: 520px; }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0 0 20px 4px;
+    }
+    .logo {
+      width: 46px; height: 46px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: white; font-size: 23px; font-weight: 800;
+      background: linear-gradient(135deg, #3984ff, #675cff);
+      box-shadow: 0 8px 26px rgba(57,132,255,.28);
+    }
+    .brand-name { font-weight: 800; letter-spacing: .08em; }
+    .brand-sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .card {
+      background: rgba(17,28,46,.94);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.3);
+      backdrop-filter: blur(12px);
+    }
+    .hero { text-align: center; margin-bottom: 26px; }
+    .hero-icon {
+      width: 68px; height: 68px; margin: 0 auto 15px;
+      display: grid; place-items: center; border-radius: 22px;
+      background: rgba(57,132,255,.14); font-size: 31px;
+    }
+    h1 { margin: 0 0 9px; font-size: clamp(25px, 6vw, 32px); }
+    .intro { color: var(--muted); line-height: 1.6; margin: 0; }
+    label { display: block; font-size: 13px; font-weight: 650; margin: 17px 0 8px; }
+    input, textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--panel-2); color: var(--text);
+      padding: 14px 15px; font: inherit; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(57,132,255,.15);
+    }
+    input::placeholder, textarea::placeholder { color: #8190a6; }
+    textarea { min-height: 105px; resize: vertical; }
+    .hint { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 8px 1px 0; }
+    button {
+      width: 100%; border: 0; border-radius: 13px; padding: 15px 18px;
+      margin-top: 22px; color: white; font: inherit; font-weight: 750;
+      background: var(--blue); cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    button:hover { background: var(--blue-hover); }
+    button:active { transform: scale(.99); }
+    .secondary {
+      margin-top: 10px; background: transparent; border: 1px solid var(--line);
+      color: var(--text);
+    }
+    .secondary:hover { background: rgba(255,255,255,.06); }
+    .notice {
+      display: flex; gap: 10px; margin-top: 20px; padding: 13px;
+      border-radius: 12px; background: rgba(16,185,129,.09);
+      color: #b8f3dc; font-size: 12px; line-height: 1.55;
+    }
+    .footer { text-align: center; color: #8190a6; font-size: 12px; margin: 18px 8px 0; }
+    @media (max-width: 480px) { .card { padding: 23px 19px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <div class="logo">Z</div>
+      <div>
+        <div class="brand-name">CTY CP TM TT NP - HT TEAM SUPPORT</div>
+        <div class="brand-sub">Hỗ trợ tài khoản trực tuyến</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="hero">
+        <div class="hero-icon" aria-hidden="true">🔐</div>
+        <h1>Quên mật khẩu?</h1>
+        <p class="intro">Điền thông tin bên dưới để gửi yêu cầu hỗ trợ qua Zalo.</p>
+      </div>
+
+      <form id="supportForm">
+        <label for="account">Tên tài khoản</label>
+        <input id="account" name="account" autocomplete="username"
+               placeholder="Nhập tên tài khoản" required maxlength="80">
+
+        <label for="email">Email đăng ký (nếu có)</label>
+        <input id="email" name="email" type="email" autocomplete="email"
+               placeholder="name@example.com" maxlength="120">
+
+        <label for="details">Nội dung cần hỗ trợ</label>
+        <textarea id="details" name="details" maxlength="1000"
+          placeholder="Mô tả ngắn gọn vấn đề bạn đang gặp..." required></textarea>
+        <p class="hint">Không nhập mật khẩu hiện tại, mật khẩu mới, mã OTP hoặc mã khôi phục vào biểu mẫu.</p>
+
+        <button type="submit">💬 Gửi yêu cầu qua Zalo</button>
+        <button class="secondary" type="button" id="copyBtn">Sao chép nội dung yêu cầu</button>
+      </form>
+
+      <div class="notice">
+        <span>🛡️</span>
+        <span>Trang này chỉ gửi thông tin liên hệ hỗ trợ. Nhân viên hỗ trợ không cần biết mật khẩu hoặc mã OTP của bạn.</span>
+      </div>
+    </section>
+    <p class="footer">© <span id="year"></span> CTY CP TM TT NP - HT TEAM SUPPORT</p>
+  </main>
+
+  <script>
+    // THAY số bên dưới bằng số điện thoại Zalo của bạn (mã quốc gia 84, bỏ số 0 đầu).
+    // Ví dụ: 0912345678 -> 84912345678
+    const ZALO_PHONE = "84384333135";
+
+    const form = document.getElementById("supportForm");
+    const copyBtn = document.getElementById("copyBtn");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function makeMessage() {
+      const account = document.getElementById("account").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const details = document.getElementById("details").value.trim();
+
+      return [
+        "Xin chào, tôi muốn yêu cầu hỗ trợ tài khoản.",
+        "Tên tài khoản: " + account,
+        "Email đăng ký: " + (email || "Chưa cung cấp"),
+        "Nội dung: " + details,
+        "",
+        "Tôi không gửi mật khẩu hoặc mã OTP qua tin nhắn."
+      ].join("\n");
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const message = makeMessage();
+
+      try {
+        await navigator.clipboard.writeText(message);
+        alert("Đã sao chép nội dung yêu cầu. Zalo sẽ mở để bạn dán và gửi tin nhắn.");
+      } catch (error) {
+        alert("Zalo sẽ mở. Nếu nội dung chưa được sao chép, hãy dùng nút Sao chép nội dung yêu cầu.");
+      }
+
+      if (!/^[0-9]{10,15}$/.test(ZALO_PHONE)) {
+        alert("Liên kết Zalo chưa được cấu hình đúng. Vui lòng kiểm tra số điện thoại trong file index.html.");
+        return;
+      }
+
+      window.location.href = "https://zalo.me/" + ZALO_PHONE;
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      if (!form.reportValidity()) return;
+      try {
+        await navigator.clipboard.writeText(makeMessage());
+        alert("Đã sao chép nội dung yêu cầu. Bạn có thể mở Zalo và dán tin nhắn.");
+      } catch (error) {
+        alert("Không thể tự sao chép trên trình duyệt này. Vui lòng thử lại hoặc sao chép thủ công.");
+      }
+    });
+  </script>
+</body>
+</html>
