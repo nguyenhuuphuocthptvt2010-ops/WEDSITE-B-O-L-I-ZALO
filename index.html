@@ -143,18 +143,6 @@ button.action:hover{background:#236fe8}.secondary{background:transparent!importa
 </body>
 </html>'''
 
-base = pathlib.Path("/mnt/data")
-html_path = base / "index.html"
-zip_path = base / "CTY_NP_HT_TEAM_SUPPORT_V2.zip"
-html_path.write_text(html, encoding="utf-8")
-with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-    archive.write(html_path, arcname="index.html")
-
-# Verify the archive and its HTML entry.
-with zipfile.ZipFile(zip_path, "r") as archive:
-    assert archive.testzip() is None
-    assert "index.html" in archive.namelist()
-
 print("Đã tạo và kiểm tra thành công:")
 print(f"- HTML: {html_path} ({html_path.stat().st_size:,} bytes)")
 print(f"- ZIP: {zip_path} ({zip_path.stat().st_size:,} bytes)")
