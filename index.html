@@ -127,7 +127,11 @@
           placeholder="Mô tả ngắn gọn vấn đề bạn đang gặp..." required></textarea>
         <p class="hint">Không nhập mật khẩu hiện tại, mật khẩu mới, mã OTP hoặc mã khôi phục vào biểu mẫu.</p>
 
-        <button type="submit">💬 Gửi yêu cầu qua Zalo</button>
+        <label for="messagePreview">Nội dung tin nhắn sẽ gửi</label>
+        <textarea id="messagePreview" readonly aria-live="polite" style="min-height:145px; opacity:.9" placeholder="Nội dung yêu cầu sẽ tự hiển thị tại đây khi bạn điền biểu mẫu."></textarea>
+        <p class="hint">Khi bấm nút bên dưới, nội dung sẽ được sao chép và Zalo sẽ mở. Bạn chỉ cần dán vào khung chat rồi bấm Gửi.</p>
+
+        <button type="submit">💬 Mở Zalo & chuẩn bị tin nhắn</button>
         <button class="secondary" type="button" id="copyBtn">Sao chép nội dung yêu cầu</button>
       </form>
 
@@ -146,6 +150,7 @@
 
     const form = document.getElementById("supportForm");
     const copyBtn = document.getElementById("copyBtn");
+    const messagePreview = document.getElementById("messagePreview");
     document.getElementById("year").textContent = new Date().getFullYear();
 
     function makeMessage() {
@@ -163,35 +168,56 @@
       ].join("\n");
     }
 
+    function updatePreview() {
+      messagePreview.value = makeMessage();
+    }
+
+    // Tự cập nhật bản xem trước khi khách hàng nhập thông tin.
+    form.querySelectorAll("input, textarea").forEach((field) => {
+      if (field.id !== "messagePreview") {
+        field.addEventListener("input", updatePreview);
+      }
+    });
+    updatePreview();
+
+    async function copyRequestMessage() {
+      const message = makeMessage();
+      messagePreview.value = message;
+      try {
+        await navigator.clipboard.writeText(message);
+        return true;
+      } catch (error) {
+        // Trình duyệt không cấp quyền clipboard: khách vẫn có thể sao chép từ ô xem trước.
+        messagePreview.focus();
+        messagePreview.select();
+        return false;
+      }
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
-
-      const message = makeMessage();
-
-      try {
-        await navigator.clipboard.writeText(message);
-        alert("Đã sao chép nội dung yêu cầu. Zalo sẽ mở để bạn dán và gửi tin nhắn.");
-      } catch (error) {
-        alert("Zalo sẽ mở. Nếu nội dung chưa được sao chép, hãy dùng nút Sao chép nội dung yêu cầu.");
-      }
 
       if (!/^[0-9]{10,15}$/.test(ZALO_PHONE)) {
         alert("Liên kết Zalo chưa được cấu hình đúng. Vui lòng kiểm tra số điện thoại trong file index.html.");
         return;
       }
 
+      const copied = await copyRequestMessage();
+      if (copied) {
+        alert("Đã chuẩn bị và sao chép tin nhắn. Khi Zalo mở, bạn chỉ cần dán vào khung chat rồi bấm Gửi.");
+      } else {
+        alert("Trình duyệt không cho phép tự sao chép. Nội dung đã được chọn trong ô xem trước; hãy sao chép, sau đó dán vào Zalo.");
+      }
       window.location.href = "https://zalo.me/" + ZALO_PHONE;
     });
 
     copyBtn.addEventListener("click", async () => {
       if (!form.reportValidity()) return;
-      try {
-        await navigator.clipboard.writeText(makeMessage());
-        alert("Đã sao chép nội dung yêu cầu. Bạn có thể mở Zalo và dán tin nhắn.");
-      } catch (error) {
-        alert("Không thể tự sao chép trên trình duyệt này. Vui lòng thử lại hoặc sao chép thủ công.");
-      }
+      const copied = await copyRequestMessage();
+      alert(copied
+        ? "Đã sao chép nội dung yêu cầu. Bạn chỉ cần mở Zalo, dán tin nhắn và bấm Gửi."
+        : "Nội dung đã được chọn trong ô xem trước. Hãy sao chép thủ công rồi dán vào Zalo.");
     });
   </script>
 </body>
