@@ -1,263 +1,160 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>CTY CP TM TT NP - HT TEAM SUPPORT</title>
-  <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #111c2e;
-      --panel-2: #18263b;
-      --text: #eef4ff;
-      --muted: #a8b6ca;
-      --blue: #3984ff;
-      --blue-hover: #236fe8;
-      --line: rgba(255,255,255,.1);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 28px 16px;
-      display: grid;
-      place-items: center;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(57,132,255,.18), transparent 32%),
-        radial-gradient(circle at 90% 90%, rgba(18,190,166,.12), transparent 28%),
-        var(--bg);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-    .wrap { width: 100%; max-width: 520px; }
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-      margin: 0 0 20px 4px;
-    }
-    .logo {
-      width: 46px; height: 46px; border-radius: 14px;
-      display: grid; place-items: center;
-      color: white; font-size: 23px; font-weight: 800;
-      background: linear-gradient(135deg, #3984ff, #675cff);
-      box-shadow: 0 8px 26px rgba(57,132,255,.28);
-    }
-    .brand-name { font-weight: 800; letter-spacing: .08em; }
-    .brand-sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
-    .card {
-      background: rgba(17,28,46,.94);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: 0 24px 70px rgba(0,0,0,.3);
-      backdrop-filter: blur(12px);
-    }
-    .nav-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-    .tab-btn { margin: 0; padding: 13px 10px; background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); }
-    .tab-btn[aria-selected="true"] { background: var(--blue); color: #fff; border-color: transparent; }
-    .tab-panel[hidden] { display: none; }
-    .success-panel { text-align: center; padding: 26px 12px 18px; }
-    .success-icon { width: 76px; height: 76px; margin: 0 auto 18px; display: grid; place-items: center; border-radius: 50%; background: rgba(16,185,129,.14); color: #6ee7b7; font-size: 38px; }
-    .success-panel h1 { color: #b8f3dc; }
-    .success-panel .intro { max-width: 390px; margin: 0 auto; }
-    .hero { text-align: center; margin-bottom: 26px; }
-    .hero-icon {
-      width: 68px; height: 68px; margin: 0 auto 15px;
-      display: grid; place-items: center; border-radius: 22px;
-      background: rgba(57,132,255,.14); font-size: 31px;
-    }
-    h1 { margin: 0 0 9px; font-size: clamp(25px, 6vw, 32px); }
-    .intro { color: var(--muted); line-height: 1.6; margin: 0; }
-    label { display: block; font-size: 13px; font-weight: 650; margin: 17px 0 8px; }
-    input, textarea {
-      width: 100%; border: 1px solid var(--line); border-radius: 12px;
-      background: var(--panel-2); color: var(--text);
-      padding: 14px 15px; font: inherit; outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    input:focus, textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(57,132,255,.15);
-    }
-    input::placeholder, textarea::placeholder { color: #8190a6; }
-    textarea { min-height: 105px; resize: vertical; }
-    .hint { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 8px 1px 0; }
-    button {
-      width: 100%; border: 0; border-radius: 13px; padding: 15px 18px;
-      margin-top: 22px; color: white; font: inherit; font-weight: 750;
-      background: var(--blue); cursor: pointer;
-      transition: background .2s, transform .2s;
-    }
-    button:hover { background: var(--blue-hover); }
-    button:active { transform: scale(.99); }
-    .secondary {
-      margin-top: 10px; background: transparent; border: 1px solid var(--line);
-      color: var(--text);
-    }
-    .secondary:hover { background: rgba(255,255,255,.06); }
-    .notice {
-      display: flex; gap: 10px; margin-top: 20px; padding: 13px;
-      border-radius: 12px; background: rgba(16,185,129,.09);
-      color: #b8f3dc; font-size: 12px; line-height: 1.55;
-    }
-    .footer { text-align: center; color: #8190a6; font-size: 12px; margin: 18px 8px 0; }
-    @media (max-width: 480px) { .card { padding: 23px 19px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>CTY CP TM TT NP - HT TEAM SUPPORT</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#18263b;--text:#eef4ff;--muted:#a8b6ca;--blue:#3984ff;--line:rgba(255,255,255,.1);--green:#16b981}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:28px 16px;display:grid;place-items:center;color:var(--text);background:radial-gradient(circle at 15% 10%,rgba(57,132,255,.18),transparent 32%),radial-gradient(circle at 90% 90%,rgba(18,190,166,.12),transparent 28%),var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{width:100%;max-width:650px}.brand{display:flex;align-items:center;gap:12px;margin:0 0 20px 4px}
+.logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:white;font-size:23px;font-weight:800;background:linear-gradient(135deg,#3984ff,#675cff);box-shadow:0 8px 26px rgba(57,132,255,.28)}
+.brand-name{font-weight:800;letter-spacing:.04em}.brand-sub{color:var(--muted);font-size:12px;margin-top:2px}
+.card{background:rgba(17,28,46,.95);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.3);backdrop-filter:blur(12px)}
+.hero{text-align:center;margin-bottom:24px}.hero-icon{width:68px;height:68px;margin:0 auto 15px;display:grid;place-items:center;border-radius:22px;background:rgba(57,132,255,.14);font-size:31px}
+h1{margin:0 0 9px;font-size:clamp(25px,6vw,32px)}h2{font-size:19px;margin:0 0 9px}h3{font-size:15px;margin:0 0 7px}
+.intro{color:var(--muted);line-height:1.6;margin:0}.muted{color:var(--muted);line-height:1.6}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:22px 0}
+.choice{border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--panel2);text-align:left;cursor:pointer;color:var(--text);transition:.2s}
+.choice:hover{border-color:var(--blue);transform:translateY(-2px)}.choice .ico{font-size:25px;display:block;margin-bottom:10px}.choice p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 0}
+.guide{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:13px}
+.guide-item{padding:15px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.guide-item p{font-size:13px;color:var(--muted);line-height:1.55;margin:6px 0 0}
+label{display:block;font-size:13px;font-weight:650;margin:17px 0 8px}
+input,textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text);padding:14px 15px;font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(57,132,255,.15)}
+input::placeholder,textarea::placeholder{color:#8190a6}textarea{min-height:105px;resize:vertical}
+.hint{color:var(--muted);font-size:12px;line-height:1.5;margin:8px 1px 0}
+button.action{width:100%;border:0;border-radius:13px;padding:15px 18px;margin-top:18px;color:white;font:inherit;font-weight:750;background:var(--blue);cursor:pointer}
+button.action:hover{background:#236fe8}.secondary{background:transparent!important;border:1px solid var(--line)!important;color:var(--text)!important;margin-top:10px!important}
+.back{display:inline-flex;align-items:center;gap:7px;color:#9fc2ff;background:transparent;border:0;padding:0;margin:0 0 20px;cursor:pointer;font:inherit;font-weight:650}
+.notice{display:flex;gap:10px;margin-top:20px;padding:14px;border-radius:12px;background:rgba(16,185,129,.09);color:#b8f3dc;font-size:13px;line-height:1.55}
+.success{padding:22px;border-radius:17px;text-align:center;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.28)}
+.success .check{font-size:38px;margin-bottom:9px}.success p{margin:7px 0 0;line-height:1.6;color:#c9f7e5}
+.warning{padding:12px 14px;border-radius:12px;background:rgba(245,158,11,.09);border:1px solid rgba(245,158,11,.2);color:#f7d9a2;font-size:12px;line-height:1.55;margin-top:16px}
+.footer{text-align:center;color:#8190a6;font-size:12px;margin:18px 8px 0}
+[hidden]{display:none!important}
+@media(max-width:520px){.card{padding:23px 19px}.choices,.guide-grid{grid-template-columns:1fr}.choice{padding:16px}}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="brand">
-      <div class="logo">Z</div>
-      <div>
-        <div class="brand-name">CTY CP TM TT NP - HT TEAM SUPPORT</div>
-        <div class="brand-sub">Hỗ trợ tài khoản trực tuyến</div>
-      </div>
-    </header>
+<main class="wrap">
+<header class="brand"><div class="logo">NP</div><div><div class="brand-name">CTY CP TM TT NP - HT TEAM SUPPORT</div><div class="brand-sub">Trung tâm hỗ trợ tài khoản</div></div></header>
 
-    <nav class="nav-tabs" aria-label="Chức năng hỗ trợ">
-      <button class="tab-btn" type="button" id="homeTab" role="tab" aria-controls="homePanel" aria-selected="true">Mục 1 · Trang chính</button>
-      <button class="tab-btn" type="button" id="forgotTab" role="tab" aria-controls="forgotPanel" aria-selected="false">Mục 2 · Quên mật khẩu</button>
-    </nav>
+<section class="card" id="homePage">
+  <div class="hero"><div class="hero-icon">🛡️</div><h1>Trung tâm hỗ trợ</h1><p class="intro">Vui lòng chọn chức năng bạn cần sử dụng bên dưới.</p></div>
+  <div class="choices">
+    <button class="choice" type="button" data-page="gmailPage"><span class="ico">📧</span><strong>1. Xác nhận Gmail</strong><p>Xem hướng dẫn và thông báo sau khi Gmail đã được hệ thống xác minh.</p></button>
+    <button class="choice" type="button" data-page="forgotPage"><span class="ico">🔐</span><strong>2. Quên mật khẩu</strong><p>Gửi yêu cầu hỗ trợ tài khoản qua Zalo.</p></button>
+  </div>
+  <div class="guide">
+    <h2>📘 Hướng dẫn chi tiết 2 chức năng</h2>
+    <div class="guide-grid">
+      <article class="guide-item"><h3>01 — Xác nhận Gmail</h3><p>Thực hiện xác minh Gmail theo hướng dẫn từ hệ thống. Khi máy chủ xác nhận thành công, quay lại website và đăng nhập tài khoản.</p></article>
+      <article class="guide-item"><h3>02 — Quên mật khẩu</h3><p>Chọn mục Quên mật khẩu, nhập tên tài khoản và thông tin liên hệ, mô tả vấn đề rồi mở Zalo để gửi yêu cầu hỗ trợ.</p></article>
+    </div>
+  </div>
+</section>
 
-    <section class="card">
-      <section class="tab-panel" id="homePanel" role="tabpanel" aria-labelledby="homeTab">
-        <div class="success-panel">
-          <div class="success-icon" aria-hidden="true">✓</div>
-          <h1>Đã Xác Nhận Gmail Thành Công</h1>
-          <p class="intro">Vui lòng quay lại trang website để đăng nhập.</p>
-          <button type="button" id="goForgotBtn">Cần hỗ trợ? Quên mật khẩu</button>
-        </div>
-      </section>
+<section class="card" id="gmailPage" hidden>
+  <button class="back" type="button" data-page="homePage">← Trang chủ</button>
+  <div class="hero"><div class="hero-icon">📧</div><h1>Xác nhận Gmail</h1><p class="intro">Thông báo dành cho trường hợp Gmail đã được hệ thống xác minh thành công.</p></div>
+  <div class="success"><div class="check">✓</div><h2>Đã Xác Nhận Gmail Thành Công</h2><p>Vui Lòng Quay Lại Trang Website Để Đăng Nhập.</p></div>
+  <div class="warning">Lưu ý: Đây là trang HTML tĩnh, không tự kiểm tra được trạng thái xác minh Gmail. Chỉ hiển thị thông báo thành công sau khi website kết nối hệ thống xác thực và nhận kết quả hợp lệ từ máy chủ.</div>
+  <button class="action" type="button" id="returnLoginBtn">Quay lại trang đăng nhập</button>
+  <p class="hint">Cấu hình đường dẫn trang đăng nhập tại biến LOGIN_URL ở cuối file index.html.</p>
+</section>
 
-      <section class="tab-panel" id="forgotPanel" role="tabpanel" aria-labelledby="forgotTab" hidden>
-      <div class="hero">
-        <div class="hero-icon" aria-hidden="true">🔐</div>
-        <h1>Quên mật khẩu?</h1>
-        <p class="intro">Điền thông tin bên dưới để gửi yêu cầu hỗ trợ qua Zalo.</p>
-      </div>
+<section class="card" id="forgotPage" hidden>
+  <button class="back" type="button" data-page="homePage">← Trang chủ</button>
+  <div class="hero"><div class="hero-icon">🔐</div><h1>Quên mật khẩu?</h1><p class="intro">Điền thông tin bên dưới để gửi yêu cầu hỗ trợ qua Zalo.</p></div>
+  <form id="supportForm">
+    <label for="account">Tên tài khoản</label><input id="account" name="account" autocomplete="username" placeholder="Nhập tên tài khoản" required maxlength="80">
+    <label for="email">Email hoặc số điện thoại đăng ký</label><input id="email" name="email" type="text" autocomplete="email" placeholder="Nhập email hoặc số điện thoại" maxlength="120">
+    <label for="details">Nội dung cần hỗ trợ</label><textarea id="details" name="details" maxlength="1000" placeholder="Mô tả ngắn gọn vấn đề bạn đang gặp..." required></textarea>
+    <p class="hint">Không nhập mật khẩu hiện tại, mật khẩu mới hoặc mã OTP/mã khôi phục vào biểu mẫu.</p>
+    <label for="messagePreview">Nội dung tin nhắn sẽ gửi</label><textarea id="messagePreview" readonly aria-live="polite" style="min-height:145px;opacity:.9" placeholder="Nội dung yêu cầu sẽ tự hiển thị tại đây."></textarea>
+    <p class="hint">Khi bấm nút, nội dung sẽ được sao chép và Zalo mở ra. Bạn cần tự dán tin nhắn rồi bấm Gửi.</p>
+    <button class="action" type="submit">💬 Mở Zalo &amp; chuẩn bị tin nhắn</button>
+    <button class="action secondary" type="button" id="copyBtn">Sao chép nội dung yêu cầu</button>
+  </form>
+  <div class="notice"><span>🛡️</span><span>Nhân viên hỗ trợ không cần biết mật khẩu hoặc mã OTP của bạn. Không cung cấp các thông tin này cho bất kỳ ai.</span></div>
+</section>
+<p class="footer">© <span id="year"></span> CTY CP TM TT NP - HT TEAM SUPPORT</p>
+</main>
+<script>
+  // Thay "/" bằng URL trang đăng nhập thực tế của website.
+  const LOGIN_URL = "/";
+  const ZALO_PHONE = "84384333135";
+  const pages = ["homePage", "gmailPage", "forgotPage"];
 
-      <form id="supportForm">
-        <label for="account">Tên tài khoản</label>
-        <input id="account" name="account" autocomplete="username"
-               placeholder="Nhập tên tài khoản" required maxlength="80">
+  function showPage(pageId) {
+    pages.forEach(id => document.getElementById(id).hidden = id !== pageId);
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+  document.querySelectorAll("[data-page]").forEach(button => button.addEventListener("click", () => showPage(button.dataset.page)));
+  document.getElementById("returnLoginBtn").addEventListener("click", () => {
+    if (!LOGIN_URL || LOGIN_URL === "#") { alert("Bạn cần cấu hình LOGIN_URL thành đường dẫn trang đăng nhập."); return; }
+    window.location.href = LOGIN_URL;
+  });
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-        <label for="email">Email đăng ký (nếu có)</label>
-        <input id="email" name="email" type="email" autocomplete="email"
-               placeholder="name@example.com" maxlength="120">
+  const form = document.getElementById("supportForm");
+  const messagePreview = document.getElementById("messagePreview");
+  function makeMessage() {
+    const account = document.getElementById("account").value.trim();
+    const contact = document.getElementById("email").value.trim();
+    const details = document.getElementById("details").value.trim();
+    return [
+      "Xin chào, tôi muốn yêu cầu hỗ trợ tài khoản.",
+      "Tên tài khoản: " + account,
+      "Email/SĐT đăng ký: " + (contact || "Chưa cung cấp"),
+      "Nội dung: " + details,
+      "",
+      "Tôi không gửi mật khẩu hoặc mã OTP qua tin nhắn."
+    ].join("\n");
+  }
+  function updatePreview() { messagePreview.value = makeMessage(); }
+  form.querySelectorAll("input,textarea").forEach(field => {
+    if (field.id !== "messagePreview") field.addEventListener("input", updatePreview);
+  });
+  updatePreview();
 
-        <label for="details">Nội dung cần hỗ trợ</label>
-        <textarea id="details" name="details" maxlength="1000"
-          placeholder="Mô tả ngắn gọn vấn đề bạn đang gặp..." required></textarea>
-        <p class="hint">Không nhập mật khẩu hiện tại, mật khẩu mới, mã OTP hoặc mã khôi phục vào biểu mẫu.</p>
-
-        <label for="messagePreview">Nội dung tin nhắn sẽ gửi</label>
-        <textarea id="messagePreview" readonly aria-live="polite" style="min-height:145px; opacity:.9" placeholder="Nội dung yêu cầu sẽ tự hiển thị tại đây khi bạn điền biểu mẫu."></textarea>
-        <p class="hint">Khi bấm nút bên dưới, nội dung sẽ được sao chép và Zalo sẽ mở. Bạn chỉ cần dán vào khung chat rồi bấm Gửi.</p>
-
-        <button type="submit">💬 Mở Zalo & chuẩn bị tin nhắn</button>
-        <button class="secondary" type="button" id="copyBtn">Sao chép nội dung yêu cầu</button>
-      </form>
-      </section>
-
-      <div class="notice">
-        <span>🛡️</span>
-        <span>Trang này chỉ gửi thông tin liên hệ hỗ trợ. Nhân viên hỗ trợ không cần biết mật khẩu hoặc mã OTP của bạn.</span>
-      </div>
-    </section>
-    <p class="footer">© <span id="year"></span> CTY CP TM TT NP - HT TEAM SUPPORT</p>
-  </main>
-
-  <script>
-    // THAY số bên dưới bằng số điện thoại Zalo của bạn (mã quốc gia 84, bỏ số 0 đầu).
-    // Ví dụ: 0912345678 -> 84912345678
-    const ZALO_PHONE = "84384333135";
-
-    const form = document.getElementById("supportForm");
-    const homeTab = document.getElementById("homeTab");
-    const forgotTab = document.getElementById("forgotTab");
-    const homePanel = document.getElementById("homePanel");
-    const forgotPanel = document.getElementById("forgotPanel");
-
-    function showPanel(panel) {
-      const showHome = panel === "home";
-      homePanel.hidden = !showHome;
-      forgotPanel.hidden = showHome;
-      homeTab.setAttribute("aria-selected", String(showHome));
-      forgotTab.setAttribute("aria-selected", String(!showHome));
-    }
-    homeTab.addEventListener("click", () => showPanel("home"));
-    forgotTab.addEventListener("click", () => showPanel("forgot"));
-    document.getElementById("goForgotBtn").addEventListener("click", () => showPanel("forgot"));
-    const copyBtn = document.getElementById("copyBtn");
-    const messagePreview = document.getElementById("messagePreview");
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function makeMessage() {
-      const account = document.getElementById("account").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const details = document.getElementById("details").value.trim();
-
-      return [
-        "Xin chào, tôi muốn yêu cầu hỗ trợ tài khoản.",
-        "Tên tài khoản: " + account,
-        "Email đăng ký: " + (email || "Chưa cung cấp"),
-        "Nội dung: " + details,
-        "",
-        "Tôi không gửi mật khẩu hoặc mã OTP qua tin nhắn."
-      ].join("\n");
-    }
-
-    function updatePreview() {
-      messagePreview.value = makeMessage();
-    }
-
-    // Tự cập nhật bản xem trước khi khách hàng nhập thông tin.
-    form.querySelectorAll("input, textarea").forEach((field) => {
-      if (field.id !== "messagePreview") {
-        field.addEventListener("input", updatePreview);
-      }
-    });
-    updatePreview();
-
-    async function copyRequestMessage() {
-      const message = makeMessage();
-      messagePreview.value = message;
-      try {
-        await navigator.clipboard.writeText(message);
-        return true;
-      } catch (error) {
-        // Trình duyệt không cấp quyền clipboard: khách vẫn có thể sao chép từ ô xem trước.
-        messagePreview.focus();
-        messagePreview.select();
-        return false;
-      }
-    }
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-
-      if (!/^[0-9]{10,15}$/.test(ZALO_PHONE)) {
-        alert("Liên kết Zalo chưa được cấu hình đúng. Vui lòng kiểm tra số điện thoại trong file index.html.");
-        return;
-      }
-
-      const copied = await copyRequestMessage();
-      if (copied) {
-        alert("Đã chuẩn bị và sao chép tin nhắn. Khi Zalo mở, bạn chỉ cần dán vào khung chat rồi bấm Gửi.");
-      } else {
-        alert("Trình duyệt không cho phép tự sao chép. Nội dung đã được chọn trong ô xem trước; hãy sao chép, sau đó dán vào Zalo.");
-      }
-      window.location.href = "https://zalo.me/" + ZALO_PHONE;
-    });
-
-    copyBtn.addEventListener("click", async () => {
-      if (!form.reportValidity()) return;
-      const copied = await copyRequestMessage();
-      alert(copied
-        ? "Đã sao chép nội dung yêu cầu. Bạn chỉ cần mở Zalo, dán tin nhắn và bấm Gửi."
-        : "Nội dung đã được chọn trong ô xem trước. Hãy sao chép thủ công rồi dán vào Zalo.");
-    });
-  </script>
+  async function copyRequestMessage() {
+    messagePreview.value = makeMessage();
+    try { await navigator.clipboard.writeText(messagePreview.value); return true; }
+    catch (error) { messagePreview.focus(); messagePreview.select(); return false; }
+  }
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (!/^[0-9]{10,15}$/.test(ZALO_PHONE)) { alert("Số Zalo chưa được cấu hình đúng."); return; }
+    const copied = await copyRequestMessage();
+    alert(copied ? "Đã sao chép nội dung. Khi Zalo mở, hãy dán vào khung chat và tự bấm Gửi." : "Nội dung đã được chọn; hãy sao chép thủ công rồi dán vào Zalo.");
+    window.location.href = "https://zalo.me/" + ZALO_PHONE;
+  });
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    if (!form.reportValidity()) return;
+    const copied = await copyRequestMessage();
+    alert(copied ? "Đã sao chép nội dung yêu cầu." : "Nội dung đã được chọn. Hãy sao chép thủ công.");
+  });
+</script>
 </body>
-</html>
+</html>'''
+
+base = pathlib.Path("/mnt/data")
+html_path = base / "index.html"
+zip_path = base / "CTY_NP_HT_TEAM_SUPPORT_V2.zip"
+html_path.write_text(html, encoding="utf-8")
+with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    archive.write(html_path, arcname="index.html")
+
+# Verify the archive and its HTML entry.
+with zipfile.ZipFile(zip_path, "r") as archive:
+    assert archive.testzip() is None
+    assert "index.html" in archive.namelist()
+
+print("Đã tạo và kiểm tra thành công:")
+print(f"- HTML: {html_path} ({html_path.stat().st_size:,} bytes)")
+print(f"- ZIP: {zip_path} ({zip_path.stat().st_size:,} bytes)")
